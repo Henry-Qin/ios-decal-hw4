@@ -206,9 +206,15 @@ class PlayerViewController: UIViewController {
     func previousTrackTapped(_ sender: UIButton) {
         // FILL ME IN
         if CMTimeCompare(player.currentTime(), CMTimeMake(3, 1)) == 1 {
-            print("FKDLJFJSLKJ")
-            player.seek(to: kCMTimeZero)
-            player.play()
+            if paused {
+                currentTime = kCMTimeZero
+                player.seek(to: kCMTimeZero)
+            } else {
+                currentTime = kCMTimeZero
+                player.seek(to: kCMTimeZero)
+                player.play()
+                paused = false
+            }
         } else if !(currentIndex - 1 < 0){
             currentIndex = currentIndex - 1
             loadTrackElements()
